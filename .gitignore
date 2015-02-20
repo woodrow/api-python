@@ -2,6 +2,7 @@ coverage.xml
 pytest.xml
 htmlcov
 pylint.out
+pylint.html
 pydocs
 
 # Created by https://www.gitignore.io
