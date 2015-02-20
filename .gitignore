@@ -1,6 +1,4 @@
-coverage.xml
 pytest.xml
-htmlcov
 pylint.out
 pylint.html
 pydocs
