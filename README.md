@@ -1,5 +1,7 @@
 # Conjur Python API Client
 
+[![Circle CI](https://circleci.com/gh/conjurinc/api-python/tree/master.svg?style=svg)](https://circleci.com/gh/conjurinc/api-python/tree/master)
+
 A Python client for the Conjur API.
 
 ## Installation
