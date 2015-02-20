@@ -10,7 +10,7 @@ test:
   override:
     - py.test --cov conjur --cov-report html --cov-report xml --junitxml=pytest.xml --instafail --ignore venv
   post:
-    - pylint -f parseable conjur tests --output-format=html > pylint.html
+    - pylint -f parseable conjur tests --output-format=html > pylint.html || true
     - mkdir -p $CIRCLE_TEST_REPORTS/junit/ && cp pytest.xml $CIRCLE_TEST_REPORTS/junit/.
 
 general:
