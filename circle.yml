@@ -11,6 +11,7 @@ test:
     - py.test --cov conjur --cov-report html --cov-report xml --junitxml=pytest.xml --instafail --ignore venv
   post:
     - pylint -f parseable conjur tests | tee pylint.out
+    - mkdir -p $CIRCLE_TEST_REPORTS/junit/ && cp pytest.xml $CIRCLE_TEST_REPORTS/junit/.
 
 general:
   artifacts:
