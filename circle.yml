@@ -1,0 +1,19 @@
+machine:
+  python:
+    version: 2.7.8
+
+dependencies:
+  override:
+    - pip install -r requirements.txt -r requirements_dev.txt
+
+test:
+  override:
+    - py.test --cov conjur --cov-report html --cov-report xml --junitxml=pytest.xml --instafail --ignore venv
+  post:
+    - pylint -f parseable conjur tests | tee pylint.out
+
+general:
+  artifacts:
+    - "pytest.xml"
+    - "htmlcov"
+    - "pylint.out"
