@@ -27,6 +27,7 @@ class User(object):
         self.login = login
         # support as_role
         self.role = api.role('user', login)
+        self.resource = api.resource('user', login)
         self._attrs = attrs
 
     def exists(self):

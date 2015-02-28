@@ -18,12 +18,15 @@
 # IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+from conjur.util import urlescape
+
 
 class Group(object):
     def __init__(self, api, id):
         self.api = api
         self.id = id
         self.role = api.role('group', id)
+        self.resource = api.resource('group', id)
 
     def members(self):
         return self.role.members()
@@ -33,3 +36,11 @@ class Group(object):
 
     def remove_member(self, member):
         self.role.revoke_from(member)
+
+    def exists(self):
+        resp = self.api.get(self.url(), check_errors=False)
+        return resp.status_code != 404
+
+    def url(self):
+        return "{0}/groups/{1}".format(self.api.config.core_url, urlescape(self.id))
+
